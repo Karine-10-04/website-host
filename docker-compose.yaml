@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  lb:
+    image: nginx:1.16.0-alpine
+    volumes:
+      - ./nginx-lb.conf:/etc/nginx/nginx.conf:ro
+      - ./lb-error.log:/var/log/nginx/error.log 
+      - ./certs:/etc/nginx/certs
+    restart: always
+    network_mode: host
+
+  www1:
+    image: nginx:1.16.0-alpine
+    volumes:
+      - ./nginx-www.conf:/etc/nginx/nginx.conf:ro
+      - ./www/dist:/usr/share/nginx/html
+      - ./www1-error.log:/var/log/nginx/error.log
+    ports:
+      - 1081:80 
+
+  www2:
+    image: nginx:1.16.0-alpine
+    volumes:
+      - ./nginx-www.conf:/etc/nginx/nginx.conf:ro
+      - ./www/dist:/usr/share/nginx/html
+      - ./www2-error.log:/var/log/nginx/error.log
+    ports:
+      - 1082:80 
+        

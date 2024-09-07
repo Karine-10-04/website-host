@@ -1,0 +1,16 @@
+.PHONY: all certs	
+
+all:
+	@echo "Use <make install> to install packages"
+
+
+install:
+	apt-get update
+	apt-get install -y docker-compose docker
+
+certs:
+	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./certs/server.key -out ./certs/server.crt	
+
+dev:
+	apt-get install -y nodejs npm
+	npm install -g vue-cli
