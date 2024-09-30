@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+
+}
+
+@layer components{
+    .h-screen-1 { height: 100vh; }
+    .h-screen-2 { height: 200vh; }
+    .h-screen-3 { height: 300vh; }
+    .h-screen-4 { height: 400vh; }
+    .h-screen-5 { height: 500vh; }
+}
+
+@layer utilities{
+
+}
