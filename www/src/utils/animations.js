@@ -1,6 +1,10 @@
 import { deltaEasings } from '@/utils/easings.js';
 
 export const animate = (animation) => {
+
+    if (!animation) {
+        return (d) => d
+    }
     const animations = animation
         .split(',')
         .map(s => s.replace(/\s+/g, ''))
