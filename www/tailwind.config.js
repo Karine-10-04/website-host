@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         neutra: ['Neutra'],
-        'neutra-condensed': ['NeutraCondensed']
+        'neutra-condensed': ['NeutraCondensed'],
+        'neutra-thin': ['NeutraThin']
       },
     },
   },

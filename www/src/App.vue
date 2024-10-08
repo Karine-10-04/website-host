@@ -8,16 +8,14 @@ import { defineAsyncComponent, computed, ref, shallowRef, onMounted, provide, wa
 
 import TemplateTitle from '@/components/TemplateTitle.vue';
 import TemplateCard1 from '@/components/TemplateCard1.vue';
+import TemplateCard2 from '@/components/TemplateCard2.vue';
 import ParallaxExample1 from '@/components/ParallaxExample1.vue';
 const templates = {
   TemplateTitle,
   TemplateCard1,
+  TemplateCard2,
   ParallaxExample1,
 }
-
-const REPO = import.meta.env.VITE_REPO;
-const REPO_BRANCH = import.meta.env.VITE_REPO_BRANCH;
-const REPO_FILE = import.meta.env.VITE_REPO_FILE;
 
 const hash = ref(null)
 const debouncer = createDebouncer()
@@ -54,7 +52,7 @@ const logo = defineAsyncComponent(() => import(`@/assets/logo.svg`))
 const sections = shallowRef([
 {
     component: 'TemplateTitle',
-    nav: '^',
+    nav: 'Intro1',
     bind: {
       class: 'bg-primary',
     },
@@ -72,14 +70,59 @@ const sections = shallowRef([
     }
   },
   {
+    component: 'TemplateTitle',
+    nav: 'Intro2',
+    bind: {
+      class: 'bg-white',
+    },
+    params: {
+      title1: {
+        text: 'Madame',
+        animation: 'up-50, fadein-100',
+        class: 'font-neutra-condensed text-primary text-4xl font-medium uppercase'
+      },
+      title2: {
+        text: 'Karine',
+        animation: 'down-50, fadein-100',
+        class: 'font-neutra-condensed text-primary text-4xl font-medium uppercase'
+      },      
+    }
+  },
+  {
+    component: 'TemplateTitle',
+    nav: 'Intro3',
+    bind: {
+      class: 'bg-primary',
+    },
+    params: {
+      title1: {
+        text: 'Madame',
+        animation: 'up-50, right-50, fadein-100',
+        class: 'font-neutra-thin text-white text-4xl font-medium uppercase'
+      },
+      title2: {
+        text: 'Karine',
+        animation: 'down-50, left-50, fadein-100',
+        class: 'font-neutra-thin text-white text-4xl font-medium uppercase'
+      },      
+    }
+  },
+  {
     component: 'TemplateCard1',
     nav: 'One',
     bind: {
       class: 'bg-white',
     },
     params: {
-      subTitle: { text: 'Sub Title', class: 'font-neutra text-primary font-semibold uppercase', animation: 'up, fadein' },
-      title: { text: 'Title', class: 'font-neutra-condensed text-4xl text-slate-900 font-extrabold uppercase', animation: 'left, fadein' },
+      subTitle: { 
+        text: 'Sub Title', 
+        class: 'font-neutra-thin text-primary font-bold uppercase', 
+        animation: 'up, fadein' },
+      title: { 
+        text: 'Title', 
+        class: 'font-neutra-condensed text-4xl text-slate-900 font-extrabold uppercase', 
+        animation: 'left, fadein' 
+      },
       content: { text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.` , animation: 'down' },
       images: [
         {
@@ -100,7 +143,7 @@ const sections = shallowRef([
     params: {
       subTitle: { 
         text: 'Another Sub Title', 
-        class: 'font-neutra text-white font-semibold uppercase', 
+        class: 'font-neutra-thin text-white font-bold uppercase', 
         animation: 'up-100, fadein' },
       title: { 
         text: 'Another Title', 
@@ -125,6 +168,94 @@ const sections = shallowRef([
         },
       ],
     }
+  },
+  {
+    component: 'TemplateCard2',
+    nav: 'Three',
+    bind: {
+      class: 'bg-white',
+    },
+    params: {
+      subTitle: { 
+        text: 'Demo', 
+        class: 'font-neutra-thin font-bold uppercase', 
+        animation: 'up-100, fadein' },
+      title: { 
+        text: 'A page with bullet points', 
+        class: 'font-neutra-condensed text-4xl text-primary font-extrabold uppercase', 
+        animation: 'up-50, fadein' },
+      content: { 
+        text: `More Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`, 
+        class: 'text-lg', 
+        animation: 'up-25, fadein' },
+      items: [
+        {
+          title: 'Item #1',
+          text: 'ore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          src: `https://picsum.photos/1000?4`,
+          alt: 'stock photo',
+          animation: 'right-100, fadein' 
+        },
+        {
+          title: 'Item #2',
+          text: 'ore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          src: `https://picsum.photos/1000?5`,
+          alt: 'stock photo',
+          animation: 'left-100, fadein' 
+        },
+        {
+          title: 'Item #3',
+          text: 'ore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          src: `https://picsum.photos/1000?6`,
+          alt: 'stock photo',
+          animation: 'right-100, fadein' 
+        },
+      ],
+    }
+  },
+  {
+    component: 'TemplateCard2',
+    nav: 'Four',
+    bind: {
+      class: 'bg-primary text-white',
+    },
+    params: {
+      subTitle: { 
+        text: 'Demo', 
+        class: 'font-neutra-thin font-bold uppercase', 
+        animation: 'up-100, fadein' },
+      title: { 
+        text: 'A page with bullet points', 
+        class: 'font-neutra-condensed text-4xl text-primary font-extrabold uppercase', 
+        animation: 'up-50, fadein' },
+      content: { 
+        text: `More Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`, 
+        class: 'text-lg', 
+        animation: 'up-25, fadein' },
+      items: [
+        {
+          title: 'Item #1',
+          text: 'ore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          src: `https://picsum.photos/1000?4`,
+          alt: 'stock photo',
+          animation: 'right-100, fadein' 
+        },
+        {
+          title: 'Item #2',
+          text: 'ore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          src: `https://picsum.photos/1000?5`,
+          alt: 'stock photo',
+          animation: 'left-100, fadein' 
+        },
+        {
+          title: 'Item #3',
+          text: 'ore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          src: `https://picsum.photos/1000?6`,
+          alt: 'stock photo',
+          animation: 'right-100, fadein' 
+        },
+      ],
+    }
   }
 ])
 
@@ -144,34 +275,6 @@ const show = computed(() =>{
 const delta = computed(() => {
   const { scrollY = 0, innerHeight = 0 } = frame.value
   return ((scrollY - (show.value * innerHeight)) / innerHeight * 2) - 1
-})
-
-onMounted(() => {
-  /* DISABLE
-  axios
-    .get(`https://api.github.com/repos/${REPO}/git/trees/${REPO_BRANCH}?recursive=1`)
-    .then((response) => {
-      const { data: { tree = [] }= {} } = response
-      tree
-        .filter(({ path }) => path == REPO_FILE)
-        .map(({ url }) => { 
-          axios 
-            .get(url)
-            .then(({ data: { content = '', encoding = 'base64' } = {} }) => {
-              if (encoding !== 'base64'){
-                throw new Error(`unhandled encoding: ${encoding}`)
-              }
-              if (!Base64.isValid(content)) {
-                throw new Error(`invalid ${encoding} content: ${content}`)
-              }
-              const decoded = Base64.decode(content)
-              const parsed = JSON.parse(decoded)
-
-              console.log({ parsed })
-            })
-         })  
-    })
-  */
 })
 </script>
 <template>
@@ -223,5 +326,3 @@ html {
   scroll-snap-type: y mandatory;
 }
 </style>
-
-

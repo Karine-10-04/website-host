@@ -14,10 +14,14 @@
     src: url(@/assets/fonts/NeutrafaceCondensed-Titling.otf) format('opentype'); 
 }
 
-@layer base{
-
-
+@font-face {
+    font-family: 'NeutraThin';
+    font-weight: 200;
+    src: url(@/assets/fonts/NeutraDisp-Thin.otf) format('opentype'); 
 }
+
+@layer base{}
+
 @layer components{
     .bg-primary { background-color: rgb(255, 56, 111); }
     .text-primary { color: rgb(255, 56, 111); }
@@ -26,4 +30,5 @@
     .text-secondary{ color: rgb(0, 199, 144); }
 
 }
+
 @layer utilities{}
