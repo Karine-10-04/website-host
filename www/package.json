@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "NODE_ENV=development vite build --watch --mode development",
     "build": "NODE_ENV=production vite build --mode production",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "test": "./pull-assets.sh"
   },
   "dependencies": {
     "@lucien144/vue3-parallaxy": "^0.1.2",

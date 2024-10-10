@@ -20,6 +20,12 @@
     src: url(@/assets/fonts/NeutraDisp-Thin.otf) format('opentype'); 
 }
 
+@font-face {
+    font-family: 'NeutraMedium';
+    font-weight: 200;
+    src: url(@/assets/fonts/NeutraDisp-Medium.otf) format('opentype'); 
+}
+
 @layer base{}
 
 @layer components{

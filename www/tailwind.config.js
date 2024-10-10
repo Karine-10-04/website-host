@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         neutra: ['Neutra'],
         'neutra-condensed': ['NeutraCondensed'],
+        'neutra-medium': ['NeutraMedium'],
         'neutra-thin': ['NeutraThin']
       },
     },

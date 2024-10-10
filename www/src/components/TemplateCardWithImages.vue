@@ -18,16 +18,16 @@
                 <div class="flex-1 flex lg:opacity-[var(--stick-visibility)] transition-opacity duration-300 order-1 lg:order-none items-center">
                     <div class="space-y-3">
                         <div :class="`inline-flex ${params.subTitle.class}`"
-                            :style="subTitleStyle(delta)">{{ params.subTitle.text }}</div>
+                            :style="subTitleStyle(delta)" v-html="params.subTitle.text" />
                         <h2 :class="params.title.class"
-                            :style="titleStyle(delta)">{{ params.title.text }}</h2>
+                            :style="titleStyle(delta)" v-html="params.title.text" />
                         <p :class="params.content.class"
-                            :style="contentStyle(delta)">{{ params.content.text }}</p>
+                            :style="contentStyle(delta)" v-html="params.content.text" />
                     </div>
                 </div>
-                <div class="flex-1 flex items-center lg:scale-[var(--stick-scale)] lg:opacity-[var(--stick-visibility)] place-content-center md:order-last md:mt-20">
+                <div class="flex-1 flex flex-row space-x-3 items-center lg:scale-[var(--stick-scale)] lg:opacity-[var(--stick-visibility)] place-content-center md:order-last md:mt-20">
                     <img v-for="image in images" 
-                    :class="image.class" :style="`height: 33vh; ${image.animation(delta)}`" :src="image.src" :alt="image.alt" />
+                    :class="`object-scale-down drop-shadow-md rounded-md m-auto ${image.class}`" :style="`height: 33vh; ${image.animation(delta)}`" :src="image.src" :alt="image.alt" />
                 </div>
             </div>
         </div>
