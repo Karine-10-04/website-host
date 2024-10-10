@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+
+  letsencrypt:
+    image: certbot/certbot:latest
+    command: sh -c "certbot certonly --standalone -d madamekarine.com --text --agree-tos --email archives@madamekarine.com --server https://acme-v02.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http"
+    entrypoint: ""
+    volumes:
+      - "letsencrypt:/etc/letsencrypt"
+    environment:
+      - TERM=xterm
+    ports:
+      - "80:80"
+
+volumes:
+  letsencrypt:
+    name: letsencrypt_keys      
