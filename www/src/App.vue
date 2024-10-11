@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { createDebouncer } from 'promised-debounce';
 import { Base64 } from 'js-base64';
-import Parallaxy from '@lucien144/vue3-parallaxy';
 import { defineAsyncComponent, computed, ref, shallowRef, onMounted, provide, watch } from 'vue';
 
 import TemplateTitle from '@/components/TemplateTitle.vue';

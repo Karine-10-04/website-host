@@ -10,7 +10,6 @@
     "test": "./pull-assets.sh"
   },
   "dependencies": {
-    "@lucien144/vue3-parallaxy": "^0.1.2",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
     "js-base64": "^3.7.7",
