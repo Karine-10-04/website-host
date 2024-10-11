@@ -25,12 +25,12 @@
                     </div>
                 </div>
                 <div class="flex-1 flex flex-col lg:scale-[var(--stick-scale)] lg:opacity-[var(--stick-visibility)] md:order-last md:mt-20">
-                    <div class="grid justify-items-start">
+                    <div class="grid h-full">
                         <div v-for="item in items" 
                             class="flex flex-row space-y-4 space-y-reverse lg:space-y-0 space-x-6 object-scale-down drop-shadow-md m-auto my-4 min-w-full"
                             :style="item.animation(delta)">
-                            <img class="object-scale-down max-w-16 shadow-lg" :src="item.src" :alt="item.alt" />
-                            <div class="block">
+                            <img class="self-center object-scale-down max-w-16" :src="item.src" :alt="item.alt" />
+                            <div class="self-center block">
                                 <h5 class="font-neutra-condensed text-primary mb-2 text-xl font-medium leading-tight">{{ item.name }}</h5>
                                 <h5 class="font-neutra-medium text-black-900 mb-2 text-xl font-medium leading-tight">{{ item.title }}</h5>
                                 <p class="font-neutra text-base"><a :href="`mailto:${item.email}`">{{ item.email }}</a></p>

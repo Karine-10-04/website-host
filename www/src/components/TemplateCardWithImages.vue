@@ -25,9 +25,9 @@
                             :style="contentStyle(delta)" v-html="params.content.text" />
                     </div>
                 </div>
-                <div class="flex-1 flex flex-row space-x-3 items-center lg:scale-[var(--stick-scale)] lg:opacity-[var(--stick-visibility)] place-content-center md:order-last md:mt-20">
+                <div class="flex-1 flex flex-row space-x-3 items-center place-content-center md:order-last mt-20 md:mt-0">
                     <img v-for="image in images" 
-                    :class="`object-scale-down drop-shadow-md rounded-md m-auto ${image.class}`" :style="`height: 33vh; ${image.animation(delta)}`" :src="image.src" :alt="image.alt" />
+                    :class="`object-scale-down h-48 w-96 max-h-32 md:max-h-96 drop-shadow-md rounded-md m-auto ${image.class}`" :style="`${image.animation(delta)}`" :src="image.src" :alt="image.alt" />
                 </div>
             </div>
         </div>

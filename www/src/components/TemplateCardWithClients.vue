@@ -12,7 +12,7 @@
         const n = Math.ceil((c + 1) / _clients.length * 100);
         return {
             text: client,
-            animation: animate(`fadein, up-25-easeInOutSine`)
+            animation: animate(`fadein, up-10-easeInOutSine`)
         }
     })
 
@@ -61,7 +61,7 @@
                             :style="contentStyle(delta)" v-html="params.content.text" />
                     </div>
                 </div>
-                <div class="flex-1 flex lg:opacity-[var(--stick-visibility)] order-last md:mt-20 items-center place-content-center backdrop-blur-sm backdrop-brightness-75 p-3">
+                <div class="flex-1 flex lg:opacity-[var(--stick-visibility)] order-last md:mt-20 items-center place-content-center backdrop-blur-sm backdrop-brightness-75 p-3 justify-items-center text-center">
                     <div v-for="(client, c) in clients" 
                         class="absolute offset-0 font-neutra-condensed text-4xl text-white font-extrabold"
                         :style="client.animation(deltas[c])" 
