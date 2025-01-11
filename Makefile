@@ -25,3 +25,6 @@ cert-reload:
 
 www-reload:
 	npm --prefix ./www run build
+
+cron:
+	cp -f $(CURDIR)/crontab /var/spool/cron/crontabs/root
