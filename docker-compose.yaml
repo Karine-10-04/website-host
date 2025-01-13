@@ -25,6 +25,7 @@ services:
     volumes:
       - ./nginx-webhook/sync.sh:/usr/local/bin/sync.sh:ro
       - ./nginx-webhook/nginx.conf:/etc/nginx/nginx.conf.template:ro
+      - ./nginx-webhook/lua:/etc/nginx/lua:ro
       - ./nginx-webhook/error.log:/var/log/nginx/error.log
       - ./:/usr/share/nginx/
 
