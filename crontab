@@ -1,1 +1,0 @@
-0 3 * * * docker-compose -f docker-compose-letsencrypt.yaml up
