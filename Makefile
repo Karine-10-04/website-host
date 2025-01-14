@@ -2,7 +2,7 @@ SHELL = bash
 .PHONY: all	
 
 all:
-	@echo "Use <make install> to install packages"
+	@echo "Use <make install> to install packages" 
 	@echo "Use <make build> to build docker images"
 
 install:
