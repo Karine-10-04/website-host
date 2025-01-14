@@ -5,7 +5,7 @@ all:
 	@echo "Use <make build> to build docker images"
 
 install:
-	apt-get update
+	apt-get update 
 	apt-get install -y docker-compose docker ca-certificates
 	docker volume create --name=letsencrypt_keys
 	touch nginx-lb/error.log
