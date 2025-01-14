@@ -12,6 +12,7 @@ install:
 	touch nginx-www/www1-error.log
 	touch nginx-www/www2-error.log
 	touch nginx-webhook/error.log
+
 	touch nginx-webhook/webhook.log
 	
 build:
