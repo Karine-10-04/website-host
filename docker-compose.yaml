@@ -2,37 +2,41 @@ version: '3.8'
 
 services:
   lb:
-    image: nginx:1.16.0-alpine     
+    image: nginx:1.16.0-alpine
     depends_on:
       - www1
       - www2
     network_mode: host
     restart: always
+    env_file:
+      - .env
     volumes:
-      - ./nginx-lb/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx-lb/error.log:/var/log/nginx/error.log 
+      - ./nginx-lb/nginx.conf:/etc/nginx/nginx.conf.template:ro
+      - ./nginx-lb/error.log:/var/log/nginx/error.log
       - ./certs:/etc/nginx/certs:ro
       - letsencrypt:/etc/letsencrypt:ro
+    command: /bin/sh -c "envsubst '$$HOSTNAME' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
   webhook:
     image: base-image:webhook
     ports:
-      - 1080:80 
+      - 1080:80
     restart: always
     env_file:
       - .env
-    command: /bin/bash -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"      
     volumes:
-      - ./nginx-webhook/sync.sh:/usr/local/bin/sync.sh:ro
       - ./nginx-webhook/nginx.conf:/etc/nginx/nginx.conf.template:ro
+      - ./nginx-webhook/sync.sh:/usr/local/bin/sync.sh:ro
       - ./nginx-webhook/lua:/etc/nginx/lua:ro
       - ./nginx-webhook/error.log:/var/log/nginx/error.log
+      - ./nginx-webhook/webhook.log:/var/log/nginx/webhook.log
       - ./:/usr/share/nginx/
+    command: /bin/bash -c "envsubst '$$WEBHOOK_SECRET' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
   www1:
     image: nginx:1.16.0-alpine
     ports:
-      - 1081:80 
+      - 1081:80
     restart: always
     volumes:
       - ./nginx-www/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -42,7 +46,7 @@ services:
   www2:
     image: nginx:1.16.0-alpine
     ports:
-      - 1082:80 
+      - 1082:80
     restart: always
     volumes:
       - ./nginx-www/nginx.conf:/etc/nginx/nginx.conf:ro

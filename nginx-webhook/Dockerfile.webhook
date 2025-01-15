@@ -1,0 +1,8 @@
+FROM base-image:nginx-debian
+
+RUN apt-get update && \
+    apt-get install -y --no-install-suggests --no-install-recommends \
+        git nodejs npm && \
+    apt-get clean
+
+RUN npm install -g vite
