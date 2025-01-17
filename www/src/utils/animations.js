@@ -5,8 +5,7 @@ export const animate = (animation) => {
     if (!animation) {
         return (d) => d
     }
-    const animations = animation
-        .split(',')
+    const animations = (Array.isArray(animation) ? animation : animation.split(','))
         .map(s => s.replace(/\s+/g, ''))
         .filter(s => s)
 
@@ -16,8 +15,8 @@ export const animate = (animation) => {
     for(let a of animations) {
         // [type]-[speed]-ease[function]
         const matches = Array.from(a.matchAll(/([a-zA-Z]{2,})(-([0-9\.]{1,}))?(-([a-zA-Z]{2,}))?/g), ([
-            _, type, 
-            __, speed = 0, 
+            _, type,
+            __, speed = 0,
             ___, easing = 'linear'
         ]) => ({ type, speed: +speed, easing }))
         for (let m of matches){
@@ -71,8 +70,8 @@ export const animate = (animation) => {
                     break;
                 default:
                     // noop
-                    break; 
-            }            
+                    break;
+            }
         }
     }
 
@@ -81,12 +80,12 @@ export const animate = (animation) => {
         const scale3dY = (scaleY) ? `${scaleY(delta)}` : '1'
         const scaleT = (scaleX || scaleY)
             ? `scale3d(${scale3dX}, ${scale3dY}, 1) `
-            : ``  
-        const translate3dX = (translateX) ? `${translateX(delta)}vw` : '0' 
-        const translate3dY = (translateY) ? `${translateY(delta)}vh` : '0' 
+            : ``
+        const translate3dX = (translateX) ? `${translateX(delta)}vw` : '0'
+        const translate3dY = (translateY) ? `${translateY(delta)}vh` : '0'
         const translateT = (translateX || translateY)
             ? `translate3d(${translate3dX}, ${translate3dY}, 0) `
-            : ``  
+            : ``
         const opacityT = (opacity)
             ? `opacity: ${opacity(delta)} `
             : ``
@@ -94,7 +93,7 @@ export const animate = (animation) => {
             ? `rotate(${rotate(delta)}deg) `
             : ``
 
-        //transition: transform 100ms 100ms;            
+        //transition: transform 100ms 100ms;
         return `transform: ${scaleT}${translateT}${rotateT}; ${opacityT};`
     }
 }

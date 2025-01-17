@@ -1,16 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import theme from './src/public/theme';
 export default {
-  content: ['./index.html', './src/*.{vue,js}', './src/**/*.{vue,js}'],
-  theme: {
-    extend: {
-      fontFamily: {
-        neutra: ['Neutra'],
-        'neutra-condensed': ['NeutraCondensed'],
-        'neutra-medium': ['NeutraMedium'],
-        'neutra-thin': ['NeutraThin']
-      },
-    },
-  },
+  content: ['./index.html', './src/*.{vue,js}', './src/**/*.{vue,js}', './src/public/config.yaml'],
+  theme,
   plugins: [],
 }
-

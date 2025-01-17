@@ -1,5 +1,4 @@
 certs/*
-*error.log
 www/dist/*
 www/node_modules/*
 last_commit_id

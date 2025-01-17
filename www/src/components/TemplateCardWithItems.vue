@@ -1,6 +1,6 @@
 <script setup>
     import { animate } from '@/utils/animations.js'
- 
+
     const { delta, index, params } = defineProps(['delta', 'index', 'params'])
 
     const titleStyle = animate(params.title.animation)
@@ -26,21 +26,21 @@
                 </div>
                 <div class="flex-1 flex flex-col lg:scale-[var(--stick-scale)] lg:opacity-[var(--stick-visibility)] md:order-last md:mt-20">
                     <div class="grid h-full">
-                        <div v-for="item in items" 
+                        <div v-for="item in items"
                             class="flex flex-row space-y-4 space-y-reverse lg:space-y-0 space-x-6 object-scale-down drop-shadow-md m-auto my-4 min-w-full"
                             :style="item.animation(delta)">
                             <img class="self-center object-scale-down max-w-16" :src="item.src" :alt="item.alt" />
                             <div class="self-center block">
-                                <h5 class="font-neutra-condensed text-primary mb-2 text-xl font-medium leading-tight">{{ item.name }}</h5>
-                                <h5 class="font-neutra-medium text-black-900 mb-2 text-xl font-medium leading-tight">{{ item.title }}</h5>
-                                <p class="font-neutra text-base"><a :href="`mailto:${item.email}`">{{ item.email }}</a></p>
+                                <h5 :class="`mb-2 ${params.item.name.class}`">{{ item.name }}</h5>
+                                <h5 :class="`mb-2 ${params.item.title.class}`">{{ item.title }}</h5>
+                                <p :class="params.item.email.class"><a :href="`mailto:${item.email}`">{{ item.email }}</a></p>
                                 <p v-if="item.text"
-                                    class="mb-4 text-base">{{ item.text }}</p>
+                                    :class="`mb-4 ${params.item.text.class}`">{{ item.text }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </template>

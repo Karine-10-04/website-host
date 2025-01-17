@@ -10,6 +10,7 @@
     "test": "./pull-assets.sh"
   },
   "dependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.1.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
     "js-base64": "^3.7.7",

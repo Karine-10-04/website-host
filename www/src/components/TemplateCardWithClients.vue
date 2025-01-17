@@ -17,14 +17,14 @@
     })
 
     const tar = 2 // time at rest (s)
-    const tim = .5 // time in motion (s) 
+    const tim = .5 // time in motion (s)
     const ptr = ref() // client pointer
     const tick = () => {
         const d =  (new Date())
         const s = d.getTime() / 1E3 //d.getSeconds() + (d.getMilliseconds() / 1E3)
         ptr.value = (s % (clients.length * (tar + tim)))
-    } 
-    
+    }
+
     const deltas = computed(() => {
         return clients.map((client, c) => {
             const l = c * (tar + tim)
@@ -33,7 +33,7 @@
                 ? Math.max(-1, ptr.value - l)
                 : (ptr.value > r)
                     ? Math.min(1, ptr.value - r )
-                    : 0   
+                    : 0
         })
     })
 
@@ -52,7 +52,7 @@
             <div class="flex flex-col h-full lg:flex-row space-y-4 space-y-reverse lg:space-y-0 lg:space-x-20">
                 <div class="flex-1 flex lg:opacity-[var(--stick-visibility)] order-1 lg:order-none items-center">
                     <div class="space-y-3">
-                     
+
                         <div :class="`inline-flex ${params.subTitle.class}`"
                             :style="subTitleStyle(delta)" v-html="params.subTitle.text" />
                         <h2 :class="params.title.class"
@@ -62,12 +62,12 @@
                     </div>
                 </div>
                 <div class="flex-1 flex lg:opacity-[var(--stick-visibility)] order-last md:mt-20 items-center place-content-center backdrop-blur-sm backdrop-brightness-75 p-3 justify-items-center text-center">
-                    <div v-for="(client, c) in clients" 
-                        class="absolute offset-0 font-neutra-condensed text-4xl text-white font-extrabold"
-                        :style="client.animation(deltas[c])" 
-                        >{{ client.text }}</div>
+                    <div v-for="(_client, c) in clients"
+                        :class="`absolute offset-0 ${params.client.class}`"
+                        :style="_client.animation(deltas[c])"
+                        >{{ _client.text }}</div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </template>
