@@ -2,4 +2,5 @@
 certs/*
 www/dist/*
 www/node_modules/*
+www/src/public
 last_commit_id
