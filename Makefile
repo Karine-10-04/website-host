@@ -1,3 +1,4 @@
+include .env
 .PHONY: all
 
 all:
@@ -6,8 +7,16 @@ all:
 
 install:
 	apt-get update
-	apt-get install -y docker-compose docker ca-certificates
+	apt-get install -y docker-compose docker ca-certificates git
 	docker volume create --name=letsencrypt_keys
+	cp -n .env.example .env
+
+origin:
+	export $(grep -v '^#' .env | xargs)
+	git remote --verbose add origin-pat https://${GITHUB_PAT}@github.com/${GITHUB_REPO_HOST}.git || \
+		git remote --verbose set-url origin-pat https://${GITHUB_PAT}@github.com/${GITHUB_REPO_HOST}.git
+	git -C www/src/public/ remote --verbose add origin-pat https://${GITHUB_PAT}@github.com/${GITHUB_REPO_CONFIG}.git || \
+		git -C www/src/public/ remote --verbose set-url origin-pat https://${GITHUB_PAT}@github.com/${GITHUB_REPO_CONFIG}.git
 
 build:
 	DOCKER_BUILDKIT=1 docker build -f nginx-webhook/Dockerfile.nginx-debian -t base-image:nginx-debian --build-arg ENABLED_MODULES="ndk lua" .
@@ -26,3 +35,6 @@ crontab:
 	cat crontab.template | envsubst >> ./crontab
 	crontab ./crontab
 	rm crontab
+
+sync:
+	docker exec -it $$(docker ps --format "{{.Names}}" | grep webhook) bash /usr/local/bin/sync.sh
