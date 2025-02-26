@@ -21,11 +21,10 @@ install:
 	cp -n .env.example .env
 
 origin:
-	export $(grep -v '^#' .env | xargs)
 	git remote --verbose add origin-pat https://${GITHUB_PAT_HOST}@github.com/${GITHUB_REPO_HOST}.git || \
 		git remote --verbose set-url origin-pat https://${GITHUB_PAT_HOST}@github.com/${GITHUB_REPO_HOST}.git
-	git -C www/src/public/ remote --verbose add origin-pat https://${GITHUB_PAT_WWW}@github.com/${GITHUB_REPO_CONFIG}.git || \
-		git -C www/src/public/ remote --verbose set-url origin-pat https://${GITHUB_PAT_WWW}@github.com/${GITHUB_REPO_CONFIG}.git
+	git -C www/src/public/ remote --verbose add origin-pat https://${GITHUB_PAT_WWW}@github.com/${GITHUB_REPO_WWW}.git || \
+		git -C www/src/public/ remote --verbose set-url origin-pat https://${GITHUB_PAT_WWW}@github.com/${GITHUB_REPO_WWW}.git
 
 build:
 	DOCKER_BUILDKIT=1 docker build -f nginx-webhook/Dockerfile.nginx-debian -t base-image:nginx-debian --build-arg ENABLED_MODULES="ndk lua" .
