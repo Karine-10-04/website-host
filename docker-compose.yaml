@@ -29,8 +29,7 @@ services:
       - ./nginx-webhook/sync.sh:/usr/local/bin/sync.sh:ro
       - ./nginx-webhook/lua:/etc/nginx/lua:ro
       - ./log:/var/log/nginx
-      - ./:/usr/share/nginx/
-      - ./www/src/public/:/usr/share/nginx/www/src/public/
+      - ./www/dist:/usr/share/nginx/html:ro
     command: /bin/bash -c "envsubst '$$GITHUB_WEBHOOK_SECRET,$$GITHUB_REPO_HOST,$$GITHUB_BRANCH_HOST,$$GITHUB_REPO_WWW,$$GITHUB_BRANCH_WWW' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
   www1:
