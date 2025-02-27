@@ -1,3 +1,3 @@
 # karined-host
 
-See README.md
+See Makefile
