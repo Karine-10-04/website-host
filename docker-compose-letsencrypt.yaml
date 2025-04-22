@@ -11,7 +11,7 @@ services:
     command: sh -c "certbot certonly --standalone -d $$HOSTNAME --text --agree-tos --email $$EMAIL --server https://acme-v02.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http"
     entrypoint: ""
     volumes:
-      - "letsencrypt:/etc/letsencrypt"
+      - letsencrypt:/etc/letsencrypt
       - ./log:/var/log/letsencrypt
 #    ports:
 #      - "80:80"

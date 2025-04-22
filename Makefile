@@ -34,6 +34,7 @@ cert-key:
 	[ -f ./certs/server.key ] && [ -f ./certs/server.crt ] && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./certs/server.key -out ./certs/server.crt
 
 cert-renewal:
+	# see /var/lib/docker/volumes/letsencrypt_keys/_data
 	docker-compose -f docker-compose-letsencrypt.yaml up
 
 cert-reload:
