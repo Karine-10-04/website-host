@@ -12,8 +12,9 @@ services:
     entrypoint: ""
     volumes:
       - "letsencrypt:/etc/letsencrypt"
-    #ports:
-    #  - "80:80"
+      - ./log:/var/log/letsencrypt
+#    ports:
+#      - "80:80"
 
 volumes:
   letsencrypt:
