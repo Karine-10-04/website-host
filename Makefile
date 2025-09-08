@@ -35,7 +35,9 @@ cert-key:
 
 cert-renewal:
 	# see /var/lib/docker/volumes/letsencrypt_keys/_data
+	docker-compose -f docker-compose.yaml down
 	docker-compose -f docker-compose-letsencrypt.yaml up
+	docker-compose -f docker-compose.yaml up -d
 
 cert-reload:
 	docker-compose exec lb nginx -s reload

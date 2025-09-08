@@ -13,9 +13,11 @@ services:
     volumes:
       - letsencrypt:/etc/letsencrypt
       - ./log:/var/log/letsencrypt
-#    ports:
-#      - "80:80"
+    network_mode: host
+    # ports:
+    #   - "80:80"
 
 volumes:
   letsencrypt:
-    name: letsencrypt_keys
+    external:
+      name: letsencrypt_keys
