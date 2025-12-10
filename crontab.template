@@ -1,2 +1,2 @@
-0 3 * * * make cert-renewal
-# 0 3 * * * docker-compose -f docker-compose-letsencrypt.yaml up
+0 3 * * * cd ${PWD} && make cert-renewal
+# 0 3 * * * cd ${PWD} && docker-compose -f docker-compose-letsencrypt.yaml up
